@@ -2,8 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import collection from "./collection_data";
 import products from "../arts/data";
+import { useLanguage } from "../../context/LanguageContext";
 
 const Collection = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-[#f5f1e8] px-6 py-16 text-gray-900 transition-colors duration-500 dark:bg-zinc-950 dark:text-gray-100 sm:px-10 lg:px-20">
 
@@ -78,8 +81,8 @@ const Collection = () => {
                     {/* Image */}
                     <div className="overflow-hidden bg-gray-100 dark:bg-zinc-800">
                       <img
-                        src={product.image}
-                        alt={t(`artworks.${product.titleKey}`)}
+                        src={`${import.meta.env.BASE_URL}${product.image.replace(/^\//, "")}`}
+                        alt={t(`artworks.${product.titleKey}.title`)}
                         className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
@@ -87,7 +90,7 @@ const Collection = () => {
                     {/* Info */}
                     <div className="p-5">
                       <h3 className="font-semibold text-gray-900 dark:text-gray-100">
-                        {t(`artworks.${product.titleKey}`)}
+                        {t(`artworks.${product.titleKey}.title`)}
                       </h3>
 
                       <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">

@@ -35,7 +35,7 @@ const App = () => {
   const [userEmail, setUserEmail] = useState("");
 
   const [darkMode, setDarkMode] = useState(() => {
-  return localStorage.getItem("artaDarkMode") === "false";
+  localStorage.getItem("artaDarkMode") === "true"
 });
 
 const [soundsEnabled, setSoundsEnabled] = useState(() => {
@@ -75,7 +75,7 @@ useEffect(() => {
 
   return (
     <LanguageProvider>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Navbar
         darkMode={darkMode}
         setDarkMode={setDarkMode}

@@ -1,6 +1,6 @@
 const sounds = {
-  button: "/sounds/button-press.mp3",
-  success: "/sounds/success.mp3",
+  button: "/ARTA/sounds/button-press.mp3",
+  success: "/ARTA/sounds/success.mp3",
 };
 
 const audioCache = {};
@@ -12,19 +12,19 @@ Object.entries(sounds).forEach(([name, path]) => {
 });
 
 export const isSoundEnabled = () => {
-  return localStorage.getItem("artaSoundEnabled") !== "false";
+  return localStorage.getItem("artaSoundsEnabled") !== "false";
 };
 
-export const setSoundEnabled = (enabled) => {
+export const setSoundsEnabled = (enabled) => {
   localStorage.setItem(
-    "artaSoundEnabled",
+    "artaSoundsEnabled",
     enabled ? "true" : "false"
   );
 };
 
 export const playSound = (soundName) => {
   // Sound is ON by default unless explicitly disabled.
-  if (!isSoundEnabled()) {
+  if (!isSoundsEnabled()) {
     return;
   }
 
